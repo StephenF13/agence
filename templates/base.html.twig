@@ -18,9 +18,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link {% if 'property.index' == app.request.attributes.get('_route') %}active{% endif %}" href="{{ path('property.index') }}">Acheter</a>
+                <a class="nav-link {% if 'property.index' == app.request.attributes.get('_route') %}active{% endif %}"
+                   href="{{ path('property.index') }}">Acheter</a>
             </li>
         </ul>
+        {% if app.user %}
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="{{ path('logout') }}" class="nav-link">Se déconnecter</a></li>
+            </ul>
+        {% endif %}
 
     </div>
 </nav>

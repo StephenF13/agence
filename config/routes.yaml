@@ -25,3 +25,6 @@ admin.property.new:
 admin.property.delete:
   path: /admin/delete/{id}
   controller: App\Controller\Admin\AdminPropertyController::delete
+
+logout:
+  path: /logout
