@@ -1,5 +1,8 @@
 {# On peut avoir besoin de cette vue dans d'autre templates, c'est pourquoi on la sépare de l'index #}
 
+    {#{% cache 'property'~ property.id property.updatedAt.timestamp %}#}
+{#il faut alors que updatedAt ne soit jamais null#}
+
 <div class="card mb-4">
     {% if property.filename %}
         <img src="{{ vich_uploader_asset(property, 'imageFile')|imagine_filter('thumb') }}" class="card-img-top"
@@ -7,7 +10,7 @@
     {% else %}
         <img src="{{ '/images/properties/default.jpg' |imagine_filter('thumb') }}" class="card-img-top"
              style="width: 100%; height: auto">
-{#image de maison par défaut si pas d'image#}
+        {#image de maison par défaut si pas d'image#}
     {% endif %}
 
     <div class="card-body">
@@ -22,3 +25,4 @@
         </div>
     </div>
 </div>
+{#{% endcache %}#}
