@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Contact;
 use App\Entity\Option;
 use App\Entity\PropertySearch;
+use Ste\RecaptchaBundle\Type\RecaptchaSubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -24,7 +25,9 @@ class ContactType extends AbstractType
             ->add('lastname', TextType::class)
             ->add('phone', TextType::class)
             ->add('email', EmailType::class)
-            ->add('message', TextareaType::class);
+            ->add('message', TextareaType::class)
+            ->add('captcha', RecaptchaSubmitType::class,
+                ['label' => 'Envoyer', 'attr' => ['class' => 'btn btn-primary']]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
